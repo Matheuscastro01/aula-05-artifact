@@ -32,7 +32,7 @@ jobs:
           name: windows
           path: ./${{ env.FILE_NAME }}.exe
           
-download-and-run-linux:
+  download-and-run-linux:
     runs-on: ubuntu-latest
     needs: build-go
     steps:
@@ -49,18 +49,3 @@ download-and-run-linux:
 
       - name: Run Script
         run: ./run.sh
-
-download-only-windows:
-    runs-on: windows-latest
-    needs: build-go
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Download Windows Artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: windows
-
-      - name: List files in current directory
-        run: dir
