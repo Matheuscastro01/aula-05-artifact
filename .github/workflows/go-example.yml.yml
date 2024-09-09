@@ -46,8 +46,8 @@ jobs:
 
       - name: Run Linux script
         run: |
-          chmod +x ./run.sh
-          source ./run.sh
+           chmod +x ./run.sh
+           source ./run.sh
         
   download-only-windows:
      runs-on: windows-latest
