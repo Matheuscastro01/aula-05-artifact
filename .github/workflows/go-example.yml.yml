@@ -33,3 +33,35 @@ jobs:
         with:
           name: windows
           path: ./${{ env.FILE_NAME }}.exe
+
+download-and-run-linux:
+      - name: Download and run Linux
+        needs: build-go
+      - runs-on: ubuntu-latest
+        steps:
+        
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: download from artefacts
+        uses: actions/download-artifact@v3
+        with:
+          name: linux
+        
+      - name: List files in current directory
+        run: |
+          chmod +x ./run.sh
+          source ./run.sh
+
+download-only-windows:
+      - name: Download and run windows
+        needs: build-go
+        steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: download from artefacts
+        uses: actions/download-artifact@v3
+        with:
+          name: linux
