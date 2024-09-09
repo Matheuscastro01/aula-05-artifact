@@ -39,13 +39,24 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Download Linux Artifact
-        uses: actions/download-artifact@v2
+      - name: Download Linux artifact
+        uses: actions/download-artifact@v3
         with:
           name: linux
 
-      - name: Make run.sh executable
-        run: chmod +x ./run.sh
+      - name: Run Linux script
+        run: |
+          chmod +x ./run.sh
+          source ./run.sh
+        
+  download-only-windows:
+     runs-on: windows-latest
+     needs: build-go
+     steps:
+     - name: Checkout Repository
+       uses: actions/checkout@v3
 
-      - name: Run Script
-        run: ./run.sh
+     - name: Download Windows Artifact
+       uses: actions/download-artifact@v2
+       with:
+          name: windows
