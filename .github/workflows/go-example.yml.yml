@@ -50,7 +50,7 @@ download-and-run-linux:
       - name: Run Script
         run: ./run.sh
 
-  download-only-windows:
+download-only-windows:
     runs-on: windows-latest
     needs: build-go
     steps:
